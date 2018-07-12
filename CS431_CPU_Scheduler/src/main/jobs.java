@@ -1,13 +1,11 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.List;
 
-//TODO use arrayList instead of array
-//try using a data structure for a job, and then a separate class that contains the list of them
 public class jobs {
-    ArrayList<job> myJobs = new ArrayList<>();
-    ArrayList<job> modifiableJobs;
+    private ArrayList<job> myJobs = new ArrayList<>();
+    private ArrayList<job> modifiableJobs;
+    private int totalJobs;
     //retrieve jobs from file here
     public jobs(){
         //while != eof get jobs
@@ -17,6 +15,7 @@ public class jobs {
 
         //make modifiable copy
         modifiableJobs = myJobs;
+        totalJobs = myJobs.size();
     }
 
     public int getLength(){
@@ -26,18 +25,31 @@ public class jobs {
     public void resetModifiedJobs(){
         modifiableJobs = myJobs;
     }
+
     //checks if job is finished, removes job if it is
-    public void checkIfFinished(String Name){
+    //TODO wtf is going on here? What is name? change to index or something maybe?
+    //TODO check return statements, this is confusing
+    public boolean checkIfFinished(String Name){
         int index = modifiableJobs.indexOf(Name);
         if(index != -1){
             if(modifiableJobs.get(index).getTime() == 0){
                 removeJob(index);
+                return true;
             }
         }
+        return false;
     }
 
     private void removeJob(int index){
         System.out.print(modifiableJobs.get(index).getName() + "has been completed");
         modifiableJobs.remove(index);
+    }
+
+    private void subTime(int index){
+        modifiableJobs.get(index).subTime();
+    }
+
+    public int getTotalJobs(){
+        return totalJobs;
     }
 }
