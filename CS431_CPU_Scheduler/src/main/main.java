@@ -10,5 +10,7 @@ public class main {
         //TODO for round robin, make the time quanta an input for the class
         jobs myJobs = new jobs();
         new FirstComeFirstServe(myJobs);
+        myJobs = new jobs();
+        new ShortestFirst(myJobs);
     }
 }

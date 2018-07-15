@@ -1,10 +1,11 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+
 
 public class jobs {
-    private ArrayList<job> myJobs = new ArrayList<>();
-    public ArrayList<job> modifiableJobs;
+    public ArrayList<job> myJobs = new ArrayList<>();
     private int totalJobs;
     //retrieve jobs from file here
     public jobs(){
@@ -16,7 +17,6 @@ public class jobs {
         myJobs.add(new job("Job 4", 3));
 
         //make modifiable copy
-        modifiableJobs = myJobs;
         totalJobs = myJobs.size();
     }
 
@@ -24,18 +24,14 @@ public class jobs {
         return myJobs.size();
     }
 
-    public void resetModifiedJobs(){
-        modifiableJobs = myJobs;
-    }
-
     //checks if job is finished, removes job if it is
     //TODO wtf is going on here? What is name? change to index or something maybe?
     //TODO check return statements, this is confusing
     //I Think this is used for RR where we need to see if an item is finished, rethink the string idea though, thats a bad idea
     public boolean checkIfFinished(String Name){
-        int index = modifiableJobs.indexOf(Name);
+        int index = myJobs.indexOf(Name);
         if(index != -1){
-            if(modifiableJobs.get(index).getTime() == 0){
+            if (myJobs.get(index).getTime() == 0) {
                 removeJob(index);
                 return true;
             }
@@ -44,16 +40,20 @@ public class jobs {
     }
 
     private void removeJob(int index){
-        System.out.print(modifiableJobs.get(index).getName() + "has been completed");
-        modifiableJobs.remove(index);
+        System.out.print(myJobs.get(index).getName() + "has been completed");
+        myJobs.remove(index);
     }
 
     private void subTime(int index){
-        modifiableJobs.get(index).subTime();
+        myJobs.get(index).subTime();
     }
 
     public int getTotalJobs(){
         return totalJobs;
+    }
+
+    public void sortByTime() {
+        myJobs.sort(Comparator.comparing(job::getTime));
     }
 
 }
