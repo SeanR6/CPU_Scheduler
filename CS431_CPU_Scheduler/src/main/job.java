@@ -1,5 +1,5 @@
 package main;
-
+//reconsider this class? maybe we don't need a name?
 public class job {
     private String name;
     private int time;
