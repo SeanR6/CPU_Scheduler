@@ -8,7 +8,7 @@ class ShortestFirst {
         int totalJobs = myJobs.getTotalJobs();
         int time = 0;
         int totalTime = 0;
-        
+
         while (myJobs.getLength() > 0) {
             time = time + myJobs.myJobs.get(0).getTime();
             totalTime = totalTime + time;
