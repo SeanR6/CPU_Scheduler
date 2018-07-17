@@ -24,9 +24,10 @@ public class RoundRobin {
         avgTime = 0;
         currentJob = 0;
         timeCounter = 0;
+        System.out.println("\nRunning round robin with time quanta " + timeQ);
         //add if statement for final job, to just take car of it all at once, also might avoid issues that way
         while(myJobs.getLength() > 1){
-            timeCounter++;
+            timeCounter += timeQ;
             jobTime = myJobs.myJobs.get(currentJob).getTime();
             jobTime = jobTime - timeQ;
 
@@ -37,6 +38,8 @@ public class RoundRobin {
                 myJobs.myJobs.remove(currentJob);
                 currentJob = currentJob - 1;
                 avgTime = avgTime + timeCounter;
+            } else {
+                myJobs.myJobs.get(currentJob).subTime(timeQ);
             }
             currentJob = (currentJob + 1) % myJobs.getLength();
         }

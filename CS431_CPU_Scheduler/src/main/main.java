@@ -12,5 +12,9 @@ public class main {
         new FirstComeFirstServe(myJobs);
         myJobs = new jobs();
         new ShortestFirst(myJobs);
+        myJobs = new jobs();
+        new RoundRobin(2, myJobs);
+        myJobs = new jobs();
+        new RoundRobin(5, myJobs);
     }
 }

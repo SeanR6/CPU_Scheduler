@@ -15,5 +15,8 @@ public class job {
     public int getTime(){
         return time;
     }
-    public int subTime() {return time-1;}
+
+    public void subTime(int n) {
+        time = time - n;
+    }
 }
