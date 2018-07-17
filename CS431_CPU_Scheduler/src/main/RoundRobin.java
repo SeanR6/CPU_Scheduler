@@ -1,29 +1,20 @@
 package main;
 
-public class RoundRobin {
-    jobs myJobs;
-    int timeQ;
-    int time;
-    double avgTime;
-    int currentJob;
-    int jobTime;
-    int carryOver;
-    int timeCounter; //a loop counter that is equivalent to the current time.
+class RoundRobin {
 
     //n is the time quanta chosen
-    public RoundRobin(int n, jobs jobIn){
-        //loop while there are still processes in the arraylist
+    RoundRobin(int timeQ, jobs myJobs) {
+        //Algorithm Used:
+        //loop while there are still processes in the array list
         //use mod total items, to keep track of which thing to be working on.
         //subtract time by n at the most, if remaining time is equal to zero remove it
         //if remaining time is equal to zero remove it.
         //if time is greater than zero, add back the time taken away, then remove the item
 
-        myJobs = jobIn;
-        timeQ = n;
-        time = 0;
-        avgTime = 0;
-        currentJob = 0;
-        timeCounter = 0;
+        double avgTime = 0;
+        int currentJob = 0;
+        int timeCounter = 0;
+        int jobTime;
         System.out.println("\nRunning round robin with time quanta " + timeQ);
         //add if statement for final job, to just take car of it all at once, also might avoid issues that way
         while(myJobs.getLength() > 1){

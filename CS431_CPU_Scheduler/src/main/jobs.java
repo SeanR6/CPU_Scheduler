@@ -8,7 +8,7 @@ public class jobs {
     public ArrayList<job> myJobs = new ArrayList<>();
     private int totalJobs;
     //retrieve jobs from file here
-    public jobs(){
+    jobs() {
         //while != eof get jobs
         //test data
         myJobs.add(new job("Job 1", 1));
@@ -22,12 +22,6 @@ public class jobs {
 
     public int getLength(){
         return myJobs.size();
-    }
-
-
-    private void removeJob(int index){
-        System.out.print(myJobs.get(index).getName() + "has been completed");
-        myJobs.remove(index);
     }
 
     public int getTotalJobs(){
