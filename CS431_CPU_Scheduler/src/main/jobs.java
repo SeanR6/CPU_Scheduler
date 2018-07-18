@@ -1,22 +1,23 @@
 package main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 
 public class jobs {
     public ArrayList<job> myJobs = new ArrayList<>();
     private int totalJobs;
     //retrieve jobs from file here
-    jobs() {
-        //while != eof get jobs
-        //test data
-        myJobs.add(new job("Job 1", 1));
-        myJobs.add(new job("Job 2", 10));
-        myJobs.add(new job("Job 3", 5));
-        myJobs.add(new job("Job 4", 3));
-
-        //make modifiable copy
+    jobs(String fileName) throws FileNotFoundException {
+        File file = new File(fileName);
+        Scanner scan = new Scanner(file);
+        while (scan.hasNextLine()) {
+            myJobs.add(new job(scan.nextLine(), Integer.valueOf(scan.nextLine())));
+        }
+        scan.close();
         totalJobs = myJobs.size();
     }
 
