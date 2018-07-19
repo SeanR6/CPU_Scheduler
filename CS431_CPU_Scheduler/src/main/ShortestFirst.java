@@ -10,6 +10,7 @@ class ShortestFirst {
         int totalTime = 0;
 
         while (myJobs.getLength() > 0) {
+            System.out.println("Working on " + myJobs.myJobs.get(0).getName() + " at time " + time);
             time = time + myJobs.myJobs.get(0).getTime();
             totalTime = totalTime + time;
             System.out.println(myJobs.myJobs.get(0).getName() + " finished at clock time " + time);
